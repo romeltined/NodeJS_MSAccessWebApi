@@ -61,7 +61,7 @@ var  executeSQL = function(res, query){
 
 //GET API
 app.get("/api/user", function(req , res){
-                var query = "select * from [TestTable]";
+                var query = "SELECT * FROM [TestTable] ORDER BY Id DESC";
                 executeQuery (res, query);
 });
 
