@@ -59,12 +59,17 @@ var  executeSQL = function(res, query){
 }
 
 
-//GET API
+//GET API ALL
 app.get("/api/user", function(req , res){
                 var query = "SELECT * FROM [TestTable] ORDER BY Id DESC";
                 executeQuery (res, query);
 });
 
+//GET API SINGLE
+app.get("/api/user/:id", function(req , res){
+                var query = "SELECT * FROM [TestTable] WHERE Id = " + req.params.id;
+                executeQuery (res, query);
+});
 
 //node "C:\nodejs\nodejswebapi\server.js"
 
@@ -73,6 +78,8 @@ app.get("/api/user", function(req , res){
  app.post("/api/user", function(req , res){
                 var query = "INSERT INTO [TestTable](Field1,Field2) VALUES (" + '"' + req.body.Field1 + '"' + "," + '"' + req.body.Field2 + '"' + ")";
                 executeSQL (res, query);
+				//console.log(req.body);
+				//console.log(req.body.Field3.name);
 });
 
 //PUT API
